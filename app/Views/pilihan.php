@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/assets/images/logo_sma.png" type="image/x-icon">
-    <title>Mapel Peminatan</title>
+    <title>Mapel Pilihan Kelas XI</title>
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link href="https://cdn.datatables.net/v/bs5/dt-1.13.4/datatables.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -16,7 +17,7 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="/assets/images/logo_sma.png" alt="Logo" width="25" height="27" class="d-inline-block align-text-top">
-                Pemilihan Mata Pelajaran Peminatan
+                Pemilihan Mata Pelajaran Pilihan
             </a>
         </div>
     </nav>
@@ -31,7 +32,7 @@
 
     <main class="container">
         <div class="my-3 p-3 bg-body rounded shadow-sm">
-            <table class="table">
+            <table id="example" class="table">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -70,8 +71,16 @@
 
     </main>
 
-
+    <script src="/assets/jquery-3.6.4.min.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/v/bs5/dt-1.13.4/datatables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable({
+                stateSave: true
+            });
+        });
+    </script>
 </body>
 
 </html>

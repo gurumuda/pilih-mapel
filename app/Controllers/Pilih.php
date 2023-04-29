@@ -48,35 +48,35 @@ class Pilih extends BaseController
         $data['ba1'] = $dataPilihan->where('pilihan', 'ba1')->countAllResults();
         $data['ba2'] = $dataPilihan->where('pilihan', 'ba2')->countAllResults();
 
-        $data['kuota_fis1'] = 100;
-        $data['kuota_fis2'] = 100;
-        $data['kuota_bio1'] = 100;
-        $data['kuota_bio2'] = 100;
-        $data['kuota_bio3'] = 100;
-        $data['kuota_bio4'] = 100;
-        $data['kuota_bio5'] = 100;
-        $data['kuota_kim1'] = 100;
-        $data['kuota_kim2'] = 100;
-        $data['kuota_kim3'] = 100;
-        $data['kuota_mat1'] = 100;
-        $data['kuota_mat2'] = 100;
-        $data['kuota_mat3'] = 100;
-        $data['kuota_eko1'] = 100;
-        $data['kuota_eko2'] = 100;
-        $data['kuota_eko3'] = 100;
-        $data['kuota_sos1'] = 100;
-        $data['kuota_sos2'] = 100;
-        $data['kuota_sos3'] = 100;
-        $data['kuota_geo1'] = 100;
-        $data['kuota_geo2'] = 100;
-        $data['kuota_geo3'] = 100;
-        $data['kuota_geo4'] = 100;
-        $data['kuota_geo5'] = 100;
-        $data['kuota_tik1'] = 100;
-        $data['kuota_tik2'] = 100;
-        $data['kuota_tik3'] = 100;
-        $data['kuota_ba1'] = 100;
-        $data['kuota_ba2'] = 100;
+        $data['kuota_fis1'] = 29;
+        $data['kuota_fis2'] = 30;
+        $data['kuota_bio1'] = 31;
+        $data['kuota_bio2'] = 31;
+        $data['kuota_bio3'] = 31;
+        $data['kuota_bio4'] = 30;
+        $data['kuota_bio5'] = 30;
+        $data['kuota_kim1'] = 27;
+        $data['kuota_kim2'] = 26;
+        $data['kuota_kim3'] = 26;
+        $data['kuota_mat1'] = 29;
+        $data['kuota_mat2'] = 29;
+        $data['kuota_mat3'] = 28;
+        $data['kuota_eko1'] = 32;
+        $data['kuota_eko2'] = 32;
+        $data['kuota_eko3'] = 31;
+        $data['kuota_sos1'] = 33;
+        $data['kuota_sos2'] = 33;
+        $data['kuota_sos3'] = 32;
+        $data['kuota_geo1'] = 33;
+        $data['kuota_geo2'] = 32;
+        $data['kuota_geo3'] = 32;
+        $data['kuota_geo4'] = 32;
+        $data['kuota_geo5'] = 32;
+        $data['kuota_tik1'] = 27;
+        $data['kuota_tik2'] = 26;
+        $data['kuota_tik3'] = 26;
+        $data['kuota_ba1'] = 23;
+        $data['kuota_ba2'] = 23;
 
 
 
@@ -364,6 +364,8 @@ class Pilih extends BaseController
         $cek = $dataPilihan->where(['nama' => $nama, 'kelas' => $kelas])->first();
 
         if ($cek) {
+            session()->setFlashdata('pesan', 'Sudah ada data ' . $nama . ' kelas ' . $kelas . ', data tidak disimpan');
+            session()->setFlashdata('tipe', 'error');
             return redirect()->back();
         }
 
@@ -376,6 +378,8 @@ class Pilih extends BaseController
                 'status' => '1'
             ];
             $dataSiswa->save($status);
+            session()->setFlashdata('pesan', 'Pilihan mapel ' . $nama . ' kelas ' . $kelas . ' berhasil disimpan');
+            session()->setFlashdata('tipe', 'success');
         }
         return redirect()->back();
     }

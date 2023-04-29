@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/assets/images/logo_sma.png" type="image/x-icon">
-    <title>Mapel Peminatan</title>
+    <title>Mapel Pilihan Kelas XI</title>
     <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/assets/select2/dist/css/select2.min.css">
     <style>
@@ -30,7 +30,7 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="/assets/images/logo_sma.png" alt="Logo" width="25" height="27" class="d-inline-block align-text-top">
-                Pemilihan Mata Pelajaran Peminatan
+                Pemilihan Mata Pelajaran Pilihan
             </a>
         </div>
     </nav>
@@ -387,7 +387,18 @@
     <script src="/assets/jquery-3.6.4.min.js"></script>
     <script src="/assets/select2/dist/js/select2.min.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <?php if (session()->getFlashdata('pesan')) : ?>
+        <script>
+            Swal.fire({
+                title: '<?= session()->getFlashdata('tipe'); ?>' + ' !',
+                text: '<?= session()->getFlashdata('pesan'); ?>',
+                icon: '<?= session()->getFlashdata('tipe'); ?>',
+                timer: 4000
+            })
+        </script>
+    <?php endif; ?>
     <script>
         $("#kelas").change(function() {
             const kelas = $(this).val();
